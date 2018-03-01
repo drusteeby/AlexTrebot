@@ -31,11 +31,21 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                     "Didn't get that!",
                     promptStyle: PromptStyle.Auto);
             }
+            else if(message.Text == "string")
+            {
+                PromptDialog.Text(context, AfterTextResetAsync, "This is a test of a string input", "Sorry, I didn't hear you");
+            }
             else
             {
                 await context.PostAsync($"{this.count++}: You said {message.Text}");
                 context.Wait(MessageReceivedAsync);
             }
+        }
+
+        private async Task AfterTextResetAsync(IDialogContext context, IAwaitable<string> result)
+        {
+            await context.PostAsync($"Your string was: {result}");
+            context.Wait(MessageReceivedAsync);
         }
 
         public async Task AfterResetAsync(IDialogContext context, IAwaitable<bool> argument)
