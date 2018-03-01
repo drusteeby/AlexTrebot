@@ -32,7 +32,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                     promptStyle: PromptStyle.Auto);
             }
             else if(message.Text == "string")
-            {
+            {                
                 PromptDialog.Text(context, AfterTextResetAsync, "This is a test of a string input", "Sorry, I didn't hear you");
             }
             else
