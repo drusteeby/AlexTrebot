@@ -1,15 +1,19 @@
 ﻿<Properties StartupConfiguration="{9C7E3A46-B60F-4052-9A21-DC8D1A942216}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Web.config">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Global.asax.cs">
     <Files>
-      <File FileName="Web.Debug.config" Line="1" Column="1" />
+      <File FileName="Web.Debug.config" Line="17" Column="15" />
       <File FileName="Web.Release.config" Line="1" Column="1" />
       <File FileName="Web.config" Line="1" Column="1" />
+      <File FileName="Global.asax.cs" Line="26" Column="28" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="AlexTrebot" expanded="True" selected="True">
+          <Node name="AlexTrebot" expanded="True">
             <Node name="AlexTrebot" expanded="True">
+              <Node name="Global.asax" expanded="True">
+                <Node name="Global.asax.cs" selected="True" />
+              </Node>
               <Node name="Web.config" expanded="True" />
             </Node>
           </Node>
