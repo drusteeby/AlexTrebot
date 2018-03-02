@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.Dialogs;
 using System.Net.Http;
-
+using AlexTrebot.Slack.Messages;
 
 namespace AlexTrebot.Dialogs
 {
@@ -35,11 +35,39 @@ namespace AlexTrebot.Dialogs
             {                
                 PromptDialog.Text(context, AfterTextResetAsync, "This is a test of a string input", "Sorry, I didn't hear you");
             }
+            else if(message.Text == "button")
+            {
+                var reply = context.MakeMessage();
+                reply.ChannelData = SlackButtonMessage.GetExampleSlackButtonMessage();
+                await context.PostAsync(reply);
+
+                context.Wait(ButtonResponseReceivedAsync);
+            }
             else
             {
                 await context.PostAsync($"{this.count++}: You said {message.Text}");
                 context.Wait(MessageReceivedAsync);
             }
+        }
+
+        private async Task ButtonResponseReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> argument)
+        {
+            var message = await argument;
+
+            if (message.Text.ToLower() == "chess")
+            {
+                await context.PostAsync($"Checkmate, Athiests!");
+            }
+            else if (message.Text.ToLower() == "maze")
+            {
+                await context.PostAsync($"ERROR ERROR ERROARRRR: You totally meant to select \"Chess\"");
+            }
+            else if (message.Text.ToLower() == "war")
+            {
+                await context.PostAsync($"Welp, you ded. You just had to pull the trigger, didn't ya?");
+            }
+
+            context.Wait(MessageReceivedAsync);
         }
 
         private async Task AfterTextResetAsync(IDialogContext context, IAwaitable<string> result)
