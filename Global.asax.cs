@@ -6,8 +6,9 @@ using Microsoft.Bot.Builder.Azure;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Internals;
 using Microsoft.Bot.Connector;
+using AlexTrebot.App_Start;
 
-namespace SimpleEchoBot
+namespace AlexTrebot
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
