@@ -33,7 +33,7 @@ namespace AlexTrebot.Dialogs
             }
             else if(message.Text == "string")
             {                
-                PromptDialog.Text(context, AfterTextResetAsync, "This is a test of a string input", "Sorry, I didn't hear you");
+                PromptDialog.Text(context, AfterStringAsync, "This is a test of a string input", "Sorry, I didn't hear you");
             }
             else
             {
@@ -42,8 +42,9 @@ namespace AlexTrebot.Dialogs
             }
         }
 
-        private async Task AfterTextResetAsync(IDialogContext context, IAwaitable<string> result)
+        private async Task AfterStringAsync(IDialogContext context, IAwaitable<string> argument)
         {
+            var result = await argument;
             await context.PostAsync($"Your string was: {result}");
             context.Wait(MessageReceivedAsync);
         }
