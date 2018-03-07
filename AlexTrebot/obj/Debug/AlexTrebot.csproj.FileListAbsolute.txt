@@ -1,0 +1,52 @@
+C:\AlexTrebot\AlexTrebot\bin\Bot Application.dll.config
+C:\AlexTrebot\AlexTrebot\bin\Bot Application.dll
+C:\AlexTrebot\AlexTrebot\bin\Bot Application.pdb
+C:\AlexTrebot\AlexTrebot\bin\Autofac.dll
+C:\AlexTrebot\AlexTrebot\bin\Chronic.dll
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.Bot.Builder.Autofac.dll
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.Bot.Builder.dll
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.Bot.Connector.dll
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.IdentityModel.Logging.dll
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.IdentityModel.Protocols.dll
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.IdentityModel.Tokens.dll
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.Rest.ClientRuntime.dll
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.WindowsAzure.Configuration.dll
+C:\AlexTrebot\AlexTrebot\bin\Newtonsoft.Json.dll
+C:\AlexTrebot\AlexTrebot\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\AlexTrebot\AlexTrebot\bin\System.Net.Http.Formatting.dll
+C:\AlexTrebot\AlexTrebot\bin\System.Web.Http.dll
+C:\AlexTrebot\AlexTrebot\bin\System.Web.Http.WebHost.dll
+C:\AlexTrebot\AlexTrebot\bin\Autofac.xml
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.Bot.Builder.xml
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.Bot.Builder.Autofac.xml
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.Bot.Connector.xml
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.IdentityModel.Logging.xml
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.IdentityModel.Protocol.Extensions.xml
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.IdentityModel.Protocols.xml
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.IdentityModel.Tokens.xml
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.Rest.ClientRuntime.xml
+C:\AlexTrebot\AlexTrebot\bin\Microsoft.WindowsAzure.Configuration.xml
+C:\AlexTrebot\AlexTrebot\bin\Newtonsoft.Json.xml
+C:\AlexTrebot\AlexTrebot\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\AlexTrebot\AlexTrebot\bin\System.Net.Http.Formatting.xml
+C:\AlexTrebot\AlexTrebot\bin\System.Web.Http.xml
+C:\AlexTrebot\AlexTrebot\bin\System.Web.Http.WebHost.xml
+C:\AlexTrebot\AlexTrebot\bin\ar\Microsoft.Bot.Builder.resources.dll
+C:\AlexTrebot\AlexTrebot\bin\cs\Microsoft.Bot.Builder.resources.dll
+C:\AlexTrebot\AlexTrebot\bin\de-dE\Microsoft.Bot.Builder.resources.dll
+C:\AlexTrebot\AlexTrebot\bin\en\Microsoft.Bot.Builder.resources.dll
+C:\AlexTrebot\AlexTrebot\bin\es\Microsoft.Bot.Builder.resources.dll
+C:\AlexTrebot\AlexTrebot\bin\fa\Microsoft.Bot.Builder.resources.dll
+C:\AlexTrebot\AlexTrebot\bin\fr\Microsoft.Bot.Builder.resources.dll
+C:\AlexTrebot\AlexTrebot\bin\it\Microsoft.Bot.Builder.resources.dll
+C:\AlexTrebot\AlexTrebot\bin\ja\Microsoft.Bot.Builder.resources.dll
+C:\AlexTrebot\AlexTrebot\bin\nl\Microsoft.Bot.Builder.resources.dll
+C:\AlexTrebot\AlexTrebot\bin\pt-BR\Microsoft.Bot.Builder.resources.dll
+C:\AlexTrebot\AlexTrebot\bin\ru\Microsoft.Bot.Builder.resources.dll
+C:\AlexTrebot\AlexTrebot\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
+C:\AlexTrebot\AlexTrebot\obj\Debug\AlexTrebot.csproj.CoreCompileInputs.cache
+C:\AlexTrebot\AlexTrebot\obj\Debug\Bot Application.dll
+C:\AlexTrebot\AlexTrebot\obj\Debug\Bot Application.pdb
