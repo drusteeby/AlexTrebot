@@ -2,4 +2,11 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/AlexTrebot/v15/Server/sqlite3
+obj/
+bin/
+packages/
+*.pubxml.user
+*.csproj.user
+.vs/
+*.config
+*.userprefs
