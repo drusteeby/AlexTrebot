@@ -22,7 +22,27 @@ namespace AlexTrebot.Dialogs
         {
             var message = await argument;
 
-            if (message.Text == "reset")
+            if (message.ChannelData.Payload != null &&
+                message.ChannelData.Payload.type != null &&
+                message.ChannelData.Payload.type.Value == "interactive_message")
+            {
+                if (message.Text.ToLower() == "chess")
+                {
+                    await context.PostAsync($"Checkmate, Athiests!");
+                }
+                else if (message.Text.ToLower() == "maze")
+                {
+                    await context.PostAsync($"ERROR ERROR ERROARRRR: You totally meant to select \"Chess\"");
+                }
+                else if (message.Text.ToLower() == "war")
+                {
+                    await context.PostAsync($"Welp, you ded. You just had to pull the trigger, didn't ya?");
+                }
+
+                context.Wait(MessageReceivedAsync);
+            }
+
+            else if (message.Text == "reset")
             {
                 PromptDialog.Confirm(
                     context,
@@ -31,17 +51,17 @@ namespace AlexTrebot.Dialogs
                     "Didn't get that!",
                     promptStyle: PromptStyle.Auto);
             }
-            else if(message.Text == "string")
-            {                
+            else if (message.Text == "string")
+            {
                 PromptDialog.Text(context, AfterTextResetAsync, "This is a test of a string input", "Sorry, I didn't hear you");
             }
-            else if(message.Text == "button")
+            else if (message.Text == "button")
             {
                 var reply = context.MakeMessage();
                 reply.ChannelData = SlackButtonMessage.GetExampleSlackButtonMessage();
                 await context.PostAsync(reply);
 
-                context.Wait(ButtonResponseReceivedAsync);
+                context.Wait(MessageReceivedAsync);
             }
             else
             {

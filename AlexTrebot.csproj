@@ -177,6 +177,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Channels\ChannelMapper.cs" />
+    <Compile Include="Channels\DefaultMessageMapper.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Dialogs\EchoDialog.cs" />
     <Compile Include="Global.asax.cs">
@@ -184,6 +186,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Slack\Messages\SlackButtonMessage.cs" />
+    <Compile Include="Slack\SlackMessageMapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

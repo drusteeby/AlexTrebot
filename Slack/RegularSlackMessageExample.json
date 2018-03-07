@@ -1,0 +1,22 @@
+{
+  "SlackMessage": {
+    "token": "sirU4xCvNS19vL0ij1pB8GBw",
+    "team_id": "T4X66LT34",
+    "api_app_id": "A9KLBKBAL",
+    "event": {
+      "type": "message",
+      "user": "U4XCHJ08L",
+      "text": "test",
+      "ts": "1520459550.000739",
+      "channel": "D9MBT00TZ",
+      "event_ts": "1520459550.000739"
+    },
+    "type": "event_callback",
+    "event_id": "Ev9L7JRZ8B",
+    "event_time": 1520459550,
+    "authed_users": [
+      "U4XCHJ08L"
+    ]
+  },
+  "ApiToken": "xoxb-325692955360-XLBViD8CNdqmmS3BDYvCRtGw"
+}

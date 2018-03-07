@@ -1,0 +1,82 @@
+{
+  "Payload": {
+    "type": "interactive_message",
+    "actions": [
+      {
+        "name": "game",
+        "type": "button",
+        "value": "Chess"
+      }
+    ],
+    "callback_id": "wopr_game",
+    "team": {
+      "id": "T4X66LT34",
+      "domain": "fuckbryan"
+    },
+    "channel": {
+      "id": "D9MBT00TZ",
+      "name": "directmessage"
+    },
+    "user": {
+      "id": "U4XCHJ08L",
+      "name": "stu.dreeby"
+    },
+    "action_ts": "1520459622.870895",
+    "message_ts": "1520459448.000515",
+    "attachment_id": "1",
+    "token": "sirU4xCvNS19vL0ij1pB8GBw",
+    "is_app_unfurl": false,
+    "original_message": {
+      "text": "Would you like to play a game?",
+      "username": "ATSlackDebugWithNGrok",
+      "bot_id": "B9M5Q810E",
+      "attachments": [
+        {
+          "callback_id": "wopr_game",
+          "fallback": "You are unable to choose!",
+          "text": "Choose a game to play",
+          "id": 1,
+          "color": "3AA3E3",
+          "actions": [
+            {
+              "id": "1",
+              "name": "game",
+              "text": "Chess",
+              "type": "button",
+              "value": "Chess",
+              "style": ""
+            },
+            {
+              "id": "2",
+              "name": "game",
+              "text": "Falken's Maze",
+              "type": "button",
+              "value": "maze",
+              "style": ""
+            },
+            {
+              "id": "3",
+              "name": "game",
+              "text": "Thermonuclear War",
+              "type": "button",
+              "value": "war",
+              "style": "danger",
+              "confirm": {
+                "text": "Wouldn't you prefer a good game of chess?",
+                "title": "Are you sure?",
+                "ok_text": "PULL THE TRIGGER!",
+                "dismiss_text": "On Second Thought..."
+              }
+            }
+          ]
+        }
+      ],
+      "type": "message",
+      "subtype": "bot_message",
+      "ts": "1520459448.000515"
+    },
+    "response_url": "https://hooks.slack.com/actions/T4X66LT34/326477027509/6rB5pkrD39TaHPT5wy3TGIOd",
+    "trigger_id": "325802921345.167210707106.043bccfba39bee9ebd524949320396e9"
+  },
+  "ApiToken": "xoxb-325692955360-XLBViD8CNdqmmS3BDYvCRtGw"
+}

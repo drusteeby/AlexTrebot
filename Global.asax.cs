@@ -7,6 +7,7 @@ using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Internals;
 using Microsoft.Bot.Connector;
 using AlexTrebot.App_Start;
+using AlexTrebot.Channels;
 
 namespace AlexTrebot
 {
@@ -29,6 +30,10 @@ namespace AlexTrebot
                         .Keyed<IBotDataStore<BotData>>(AzureModule.Key_DataStore)
                         .AsSelf()
                         .SingleInstance();
+
+                    builder.RegisterType<ChannelMapper>()
+                        .As<IMessageActivityMapper>()
+                        .InstancePerLifetimeScope();
 
                 });
             GlobalConfiguration.Configure(WebApiConfig.Register);
