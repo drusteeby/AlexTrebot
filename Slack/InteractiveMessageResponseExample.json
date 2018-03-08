@@ -24,7 +24,7 @@
     "action_ts": "1520459622.870895",
     "message_ts": "1520459448.000515",
     "attachment_id": "1",
-    "token": "sirU4xCvNS19vL0ij1pB8GBw",
+    "token": "xxxxxxxxxxx",
     "is_app_unfurl": false,
     "original_message": {
       "text": "Would you like to play a game?",
@@ -75,8 +75,8 @@
       "subtype": "bot_message",
       "ts": "1520459448.000515"
     },
-    "response_url": "https://hooks.slack.com/actions/T4X66LT34/326477027509/6rB5pkrD39TaHPT5wy3TGIOd",
-    "trigger_id": "325802921345.167210707106.043bccfba39bee9ebd524949320396e9"
+    "response_url": "https://hooks.slack.com/actions/xxxxx/xxxxxx/xxxxxxx",
+    "trigger_id": "xxxxx.xxxxxxx"
   },
-  "ApiToken": "xoxb-325692955360-XLBViD8CNdqmmS3BDYvCRtGw"
+  "ApiToken": "xxxxxxxx"
 }
