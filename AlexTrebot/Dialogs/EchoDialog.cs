@@ -42,8 +42,9 @@ namespace AlexTrebot.Dialogs
             }
         }
 
-        private async Task AfterStringAsync(IDialogContext context, IAwaitable<string> result)
+        private async Task AfterStringAsync(IDialogContext context, IAwaitable<string> argument)
         {
+            var result = await argument;
             await context.PostAsync($"Your string was: {result}");
             context.Wait(MessageReceivedAsync);
         }
