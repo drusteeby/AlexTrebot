@@ -9,19 +9,25 @@ using System.Net.Http;
 namespace AlexTrebot.Dialogs
 {
     [Serializable]
-    public class EchoDialog : IDialog<object>
+    public class EchoDialog : IDialog<string>
     {
-        protected int count = 1;
+        private IMessageActivity message;
+        protected int count = 0;
+        private BotData userData;
+        private StateClient stateClient;
+
+        public EchoDialog(IMessageActivity message)
+        {
+            this.message = message;
+
+            //Load the count from User Data            
+            stateClient = message.GetStateClient();
+            userData =  stateClient.BotState.GetUserData(message.ChannelId, message.From.Id); //TODO: This method is depreciated
+            count = userData.GetProperty<int>("Count");
+        }
 
         public async Task StartAsync(IDialogContext context)
         {
-            context.Wait(MessageReceivedAsync);
-        }
-
-        public async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> argument)
-        {
-            var message = await argument;
-
             if (message.Text == "reset")
             {
                 PromptDialog.Confirm(
@@ -36,10 +42,22 @@ namespace AlexTrebot.Dialogs
                 PromptDialog.Text(context, AfterStringAsync, "This is a test of a string input", "Sorry, I didn't hear you");
             }
             else
-            {
-                await context.PostAsync($"{this.count++}: You said {message.Text}");
-                context.Wait(MessageReceivedAsync);
+            {               
+
+               
             }
+
+            context.Done($"{this.count++}: You said {message.Text}");
+        }       
+        
+
+        public async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> argument)
+        {
+            var message = await argument;
+
+            
+            
+            
         }
 
         private async Task AfterStringAsync(IDialogContext context, IAwaitable<string> argument)
