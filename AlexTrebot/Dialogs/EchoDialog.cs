@@ -12,6 +12,7 @@ namespace AlexTrebot.Dialogs
     public class EchoDialog : IDialog<string>
     {
         private IMessageActivity message;
+        string[] commandParams;
         protected int count = 0;
         private BotData userData;
         private StateClient stateClient;
@@ -20,51 +21,43 @@ namespace AlexTrebot.Dialogs
         {
             this.message = message;
 
+            //get the "params" from the "echo" command by splitting on whitespace
+            commandParams = message.Text.Split(null);
+
             //Load the count from User Data            
-            stateClient = message.GetStateClient();
-            userData =  stateClient.BotState.GetUserData(message.ChannelId, message.From.Id); //TODO: This method is depreciated
-            count = userData.GetProperty<int>("Count");
+            //stateClient = message.GetStateClient();
+            //userData =  stateClient.BotState.GetUserData(message.ChannelId, message.From.Id); //TODO: This method is depreciated
+            //count = userData.GetProperty<int>("Count");
         }
 
         public async Task StartAsync(IDialogContext context)
         {
-            if (message.Text == "reset")
+            if (commandParams.Length == 1)
             {
-                PromptDialog.Confirm(
-                    context,
-                    AfterResetAsync,
-                    "Are you sure you want to reset the count?",
-                    "Didn't get that!",
-                    promptStyle: PromptStyle.Auto);
+                //Prompt here for more information
             }
-            else if (message.Text == "string")
+            else if (commandParams.Length == 2)
             {
-                PromptDialog.Text(context, AfterStringAsync, "This is a test of a string input", "Sorry, I didn't hear you");
+                if (commandParams[1] == "reset")
+                {
+                    PromptDialog.Confirm(
+                        context,
+                        AfterResetAsync,
+                        "Are you sure you want to reset the count?",
+                        "Didn't get that!",
+                        promptStyle: PromptStyle.Auto);
+                }
             }
-            else
-            {               
 
-               
-            }
+            await SaveUserData();
 
             context.Done($"{this.count++}: You said {message.Text}");
-        }       
-        
-
-        public async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> argument)
-        {
-            var message = await argument;
-
-            
-            
-            
         }
 
-        private async Task AfterStringAsync(IDialogContext context, IAwaitable<string> argument)
+        private async Task SaveUserData()
         {
-            var result = await argument;
-            await context.PostAsync($"Your string was: {result}");
-            context.Wait(MessageReceivedAsync);
+            //userData.SetProperty("Count", count);
+            //await stateClient.BotState.SetUserDataAsync(message.ChannelId, message.From.Id, userData);
         }
 
         public async Task AfterResetAsync(IDialogContext context, IAwaitable<bool> argument)
@@ -79,7 +72,9 @@ namespace AlexTrebot.Dialogs
             {
                 await context.PostAsync("Did not reset count.");
             }
-            context.Wait(MessageReceivedAsync);
+
+            await SaveUserData();
+            context.Done($"{this.count++}: You said {message.Text}");
         }
 
     }
