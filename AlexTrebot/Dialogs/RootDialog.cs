@@ -39,6 +39,10 @@ namespace AlexTrebot.Dialogs
             {
                 await context.PostAsync($"Add the help dialog here!");
             }
+            else if (lowercasemessage.Contains("nahkyledoes"))
+            {
+                await context.PostAsync($"you right, also, Github works again!");
+            }
             //else if(lowercasemessage.Contains("echo"))
             //{
             //    context.Call(new EchoDialog(message), ResumeAfterEchoDialog);
