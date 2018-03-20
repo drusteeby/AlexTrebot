@@ -13,9 +13,11 @@ namespace AlexTrebot.Dialogs
     {
         protected int count = 1;
 
-        public async Task StartAsync(IDialogContext context)
+        public Task StartAsync(IDialogContext context)
         {
             context.Wait(MessageReceivedAsync);
+
+            return Task.CompletedTask;
         }
 
         //This is the "entry" point for all messages recieved by this bot. 
@@ -25,11 +27,12 @@ namespace AlexTrebot.Dialogs
             var lowercasemessage = message.Text.ToLower();
 
             //Decide what dialog to call based on the contents of the first message
-            if (lowercasemessage.Contains("creategame"))
+            if (lowercasemessage.Contains("create"))
             {
-                await context.PostAsync($"Add the new game dialog here!");
-                // call a new dialog here e.g.:
-                // await context.Forward(new NewOrderDialog(), this.ResumeAfterNewOrderDialog, message, CancellationToken.None);
+                await context.Forward(new CreateGameDialog(lowercasemessage), 
+                                      this.ResumeAfterDialog, 
+                                      message, 
+                                      CancellationToken.None);
             }
             else if (lowercasemessage.Contains("answer"))
             {
@@ -53,7 +56,9 @@ namespace AlexTrebot.Dialogs
             }
             else
             {
-                await context.PostAsync($"That is not a command I recognize! Possible commands are creategame, answer, viewResponses...etc..we're still working on it");
+                await context.PostAsync(
+                    $"That is not a command I recognize! Possible commands are " +
+                    "create, answer, viewResponses...etc..we're still working on it");
                 context.Wait(this.MessageReceivedAsync);
             }
         }
