@@ -43,10 +43,14 @@ namespace AlexTrebot.Dialogs
             {
                 await context.PostAsync($"you right, also, Github works again!");
             }
-            //else if(lowercasemessage.Contains("echo"))
-            //{
-            //    context.Call(new EchoDialog(message), ResumeAfterEchoDialog);
-            //}
+            else if (lowercasemessage.Contains("echo"))
+            {
+               await context.Forward(new EchoDialog(), ResumeAfterEchoDialog,message,CancellationToken.None);
+            }
+            else if (lowercasemessage.Contains("printchanneldata"))
+            {                
+                await context.PostAsync($"Channel Data: {message.ChannelData.ToString()}");
+            }
             else
             {
                 await context.PostAsync($"That is not a command I recognize! Possible commands are creategame, answer, viewResponses...etc..we're still working on it");
@@ -55,16 +59,19 @@ namespace AlexTrebot.Dialogs
         }
 
         //e.g of a "Resume After dialog" function.
-        //private async Task ResumeAfterEchoDialog(IDialogContext context, IAwaitable<string> result)
-        //{
-        //    // Store the value that NewOrderDialog returned. 
-        //    // (At this point, new order dialog has finished and returned some value to use within the root dialog.)
-        //    string resultFromEchoDialog = await result;
+        private async Task ResumeAfterEchoDialog(IDialogContext context, IAwaitable<string> result)
+        {
+            // Store the value that dialog returned. 
+            // At this point the dialog has completed and we can parse the result
+            //e.g. A "Create Game" Dialog might return a complete "Game" object, which we would store in the database
+            //Here, echo dialog is returning the same message that the bot received. 
+            string resultFromEchoDialog = await result;
 
-        //    await context.PostAsync(resultFromEchoDialog);
+            //Echo the message back to the user
+            await context.PostAsync(resultFromEchoDialog);
 
-        //    // Again, wait for the next message from the user.
-        //    context.Wait(this.MessageReceivedAsync);
-        //}
+            //Wait for the next message from the user
+            context.Wait(this.MessageReceivedAsync);
+        }
     }
 }

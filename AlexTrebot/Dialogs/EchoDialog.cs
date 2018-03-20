@@ -11,70 +11,21 @@ namespace AlexTrebot.Dialogs
     [Serializable]
     public class EchoDialog : IDialog<string>
     {
-        private IMessageActivity message;
-        string[] commandParams;
-        protected int count = 0;
-        private BotData userData;
-        private StateClient stateClient;
-
-        public EchoDialog(IMessageActivity message)
-        {
-            this.message = message;
-
-            //get the "params" from the "echo" command by splitting on whitespace
-            commandParams = message.Text.Split(null);
-
-            //Load the count from User Data            
-            //stateClient = message.GetStateClient();
-            //userData =  stateClient.BotState.GetUserData(message.ChannelId, message.From.Id); //TODO: This method is depreciated
-            //count = userData.GetProperty<int>("Count");
-        }
-
         public async Task StartAsync(IDialogContext context)
         {
-            if (commandParams.Length == 1)
-            {
-                //Prompt here for more information
-            }
-            else if (commandParams.Length == 2)
-            {
-                if (commandParams[1] == "reset")
-                {
-                    PromptDialog.Confirm(
-                        context,
-                        AfterResetAsync,
-                        "Are you sure you want to reset the count?",
-                        "Didn't get that!",
-                        promptStyle: PromptStyle.Auto);
-                }
-            }
-
-            await SaveUserData();
-
-            context.Done($"{this.count++}: You said {message.Text}");
+            context.Wait(this.MessageReceivedAsync);
         }
 
-        private async Task SaveUserData()
-        {
-            //userData.SetProperty("Count", count);
-            //await stateClient.BotState.SetUserDataAsync(message.ChannelId, message.From.Id, userData);
-        }
 
-        public async Task AfterResetAsync(IDialogContext context, IAwaitable<bool> argument)
+        public virtual async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> result)
         {
-            var confirm = await argument;
-            if (confirm)
-            {
-                this.count = 1;
-                await context.PostAsync("Reset count.");
-            }
-            else
-            {
-                await context.PostAsync("Did not reset count.");
-            }
+            var message = await result;           
 
-            await SaveUserData();
-            context.Done($"{this.count++}: You said {message.Text}");
+            //The message.text could easily be printed, parsed, or anything else you wanted to do here.
+            //as an example, we are passing the message.text to the callback function in RootDialog.
+            await context.PostAsync($"You said: ");
+
+            context.Done(message.Text);
         }
 
     }
