@@ -30,7 +30,7 @@ namespace AlexTrebot.Dialogs
             if (lowercasemessage.Contains("create"))
             {
                 await context.Forward(new CreateGameDialog(lowercasemessage), 
-                                      this.ResumeAfterDialog, 
+                                      this.ResumeAfterCreateGameDialog, 
                                       message, 
                                       CancellationToken.None);
             }
@@ -41,14 +41,13 @@ namespace AlexTrebot.Dialogs
             else if (lowercasemessage.Contains("help"))
             {
                 await context.PostAsync($"Add the help dialog here!");
-            }
-            else if (lowercasemessage.Contains("nahkyledoes"))
-            {
-                await context.PostAsync($"you right, also, Github works again!");
-            }
+            }           
             else if (lowercasemessage.Contains("echo"))
             {
-               await context.Forward(new EchoDialog(), ResumeAfterEchoDialog,message,CancellationToken.None);
+               await context.Forward(new EchoDialog(), 
+                                    ResumeAfterEchoDialog,
+                                    message,
+                                    CancellationToken.None);
             }
             else if (lowercasemessage.Contains("printchanneldata"))
             {                
@@ -61,6 +60,15 @@ namespace AlexTrebot.Dialogs
                     "create, answer, viewResponses...etc..we're still working on it");
                 context.Wait(this.MessageReceivedAsync);
             }
+        }
+
+        private async Task ResumeAfterCreateGameDialog(IDialogContext context, IAwaitable<string> result)
+        {
+            //Do stuff here with the result of the create game dialog
+            await context.PostAsync("Game created! (Or not created....)");
+
+            //Wait for the next message from the user
+            context.Wait(this.MessageReceivedAsync);
         }
 
         //e.g of a "Resume After dialog" function.
