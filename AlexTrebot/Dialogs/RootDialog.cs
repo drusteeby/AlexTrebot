@@ -5,6 +5,7 @@ using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.Dialogs;
 using System.Net.Http;
 using System.Threading;
+using AlexTrebot.Models;
 
 namespace AlexTrebot.Dialogs
 {
@@ -27,9 +28,16 @@ namespace AlexTrebot.Dialogs
             var lowercasemessage = message.Text.ToLower();
 
             //Decide what dialog to call based on the contents of the first message
-            if (lowercasemessage.Contains("create"))
+            if (lowercasemessage.Contains("help"))
             {
-                await context.Forward(new CreateGameDialog(lowercasemessage), 
+                await context.Forward(new HelpDialog(),
+                                     ResumeAfterHelpDialog,
+                                     message,
+                                     CancellationToken.None);
+            }
+            else if (lowercasemessage.Contains("create"))
+            {
+                await context.Forward(new CreateGameDialog(), 
                                       this.ResumeAfterCreateGameDialog, 
                                       message, 
                                       CancellationToken.None);
@@ -37,11 +45,7 @@ namespace AlexTrebot.Dialogs
             else if (lowercasemessage.Contains("answer"))
             {
                 await context.PostAsync($"Add the answer dialog here!");
-            }
-            else if (lowercasemessage.Contains("help"))
-            {
-                await context.PostAsync($"Add the help dialog here!");
-            }           
+            }        
             else if (lowercasemessage.Contains("echo"))
             {
                await context.Forward(new EchoDialog(), 
@@ -62,10 +66,20 @@ namespace AlexTrebot.Dialogs
             }
         }
 
-        private async Task ResumeAfterCreateGameDialog(IDialogContext context, IAwaitable<string> result)
+        private async Task ResumeAfterCreateGameDialog(IDialogContext context, IAwaitable<Game> result)
         {
+            var game = await result;
+
             //Do stuff here with the result of the create game dialog
-            await context.PostAsync("Game created! (Or not created....)");
+            if (game == null)
+            {
+                await context.PostAsync("Do you even know how to make a game?<br/>" +
+                                        "Type `help create` to find out...");
+                context.Wait(this.MessageReceivedAsync);
+                return;
+            }
+
+            await context.PostAsync($"Game created! {game}");
 
             //Wait for the next message from the user
             context.Wait(this.MessageReceivedAsync);
@@ -82,6 +96,16 @@ namespace AlexTrebot.Dialogs
 
             //Echo the message back to the user
             await context.PostAsync(resultFromEchoDialog);
+
+            //Wait for the next message from the user
+            context.Wait(this.MessageReceivedAsync);
+        }
+
+        //e.g of a "Resume After dialog" function.
+        private async Task ResumeAfterHelpDialog(IDialogContext context, IAwaitable<string> result)
+        {
+            var helpMessage = await result;
+            await context.PostAsync(helpMessage);
 
             //Wait for the next message from the user
             context.Wait(this.MessageReceivedAsync);
