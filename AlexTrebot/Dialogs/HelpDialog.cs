@@ -51,14 +51,14 @@ namespace AlexTrebot.Dialogs
         {
             return
                 "This is all I can do. Don't judge me...<br/>" +
-                "&emsp;`create`:<br/>" +
-                "&emsp;&emsp;Create a new trivia game!<br/>" +
-                "&emsp;`answer`:<br/>" +
-                "&emsp;&emsp;Dru hasn't done this yet...<br/>" +
-                "&emsp;`viewResponses`:<br/>" +
-                "&emsp;&emsp;Not Implemented<br/>" +
-                "&emsp;`help`:<br/>" +
-                "&emsp;&emsp;Uhh... That's this... What more do you want?<br/><br/>" +
+                "\t`create`:<br/>" +
+                "\t\tCreate a new trivia game!<br/>" +
+                "\t`answer`:<br/>" +
+                "\t\tDru hasn't done this yet...<br/>" +
+                "\t`viewResponses`:<br/>" +
+                "\t\tNot Implemented<br/>" +
+                "\t`help`:<br/>" +
+                "\t\tUhh... That's this... What more do you want?<br/><br/>" +
                 "For more detailed descriptions, type `help {action}`";
         }
 
@@ -66,10 +66,10 @@ namespace AlexTrebot.Dialogs
         {
             return
                 "Oh you wanna create a game? Alright, do something like this<br/>" +
-                "&emsp;`create`:<br/>" +
-                "&emsp;&emsp;Create a game by following all prompts<br/>" +
-                "&emsp;`create {category} {numQuestions} {startTime} {endTime}`<br/>" +
-                "&emsp;&emsp;Create a game like a boss and stop talking to me quicker";
+                "\t`create`:<br/>" +
+                "\t\tCreate a game by following all prompts<br/>" +
+                "\t`create {category} {numQuestions} {startTime} {endTime}`<br/>" +
+                "\t\tCreate a game like a boss and stop talking to me quicker";
         }
     }
 }
