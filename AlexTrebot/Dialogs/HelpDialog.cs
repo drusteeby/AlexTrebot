@@ -24,27 +24,27 @@ namespace AlexTrebot.Dialogs
             var activity = await argument;
             var arguments = activity.Text.Split(' ');
 
-            if (arguments.Count() == 1)
-            {
+            //if (arguments.Count() == 1)
+            //{
                 context.Done(PrintAllHelp());
-            }
-            else if (arguments.Count() > 2) 
-            {
-                context.Done("WTF are you saying? Just say help dude...");
-            }
-            else
-            {
-                switch (arguments[1])
-                {
-                    case "create":
-                        context.Done(PrintCreateHelp());
-                        break;
-                    default:
-                        await context.PostAsync("C'mon man... That means nothing to me.");
-                        context.Done(PrintAllHelp());
-                        break;
-                }
-            }
+            //}
+            //else if (arguments.Count() > 2) 
+            //{
+            //    context.Done("WTF are you saying? Just say help dude...");
+            //}
+            //else
+            //{
+            //    switch (arguments[1])
+            //    {
+            //        case "create":
+            //            context.Done(PrintCreateHelp());
+            //            break;
+            //        default:
+            //            await context.PostAsync("C'mon man... That means nothing to me.");
+            //            context.Done(PrintAllHelp());
+            //            break;
+            //    }
+            //}
         }
 
         private string PrintAllHelp()
@@ -62,14 +62,14 @@ namespace AlexTrebot.Dialogs
                 "For more detailed descriptions, type `help {action}`";
         }
 
-        private string PrintCreateHelp()
-        {
-            return
-                "Oh you wanna create a game? Alright, do something like this<br/>" +
-                "\t`create`:<br/>" +
-                "\t\tCreate a game by following all prompts<br/>" +
-                "\t`create {category} {numQuestions} {startTime} {endTime}`<br/>" +
-                "\t\tCreate a game like a boss and stop talking to me quicker";
-        }
+        //private string PrintCreateHelp()
+        //{
+        //    return
+        //        "Oh you wanna create a game? Alright, do something like this<br/>" +
+        //        "\t`create`:<br/>" +
+        //        "\t\tCreate a game by following all prompts<br/>" +
+        //        "\t`create {category} {numQuestions} {startTime} {endTime}`<br/>" +
+        //        "\t\tCreate a game like a boss and stop talking to me quicker";
+        //}
     }
 }

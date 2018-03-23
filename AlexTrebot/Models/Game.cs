@@ -3,19 +3,26 @@ using System.Collections.Generic;
 
 namespace AlexTrebot.Models
 {
+    [Serializable]
     public class Game
     {
         public string Category;
-        public List<Question> Questions;
+        public IEnumerable<Question> Questions;
         public DateTime StartTime;
         public DateTime EndTime;
 
-        public Game(string category, DateTime startTime, DateTime endTime)
+        public Game(string category, IEnumerable<Question> questions, DateTime startTime, DateTime endTime)
         {
             Category = category;
-            Questions = new List<Question>();
+            Questions = questions;
             StartTime = startTime;
             EndTime = endTime;
+        }
+
+        public override string ToString(){
+            return
+                $"Category: {Category}, {StartTime}-{EndTime}<br/>" +
+                string.Join("<br/>", Questions);
         }
     }
 }
