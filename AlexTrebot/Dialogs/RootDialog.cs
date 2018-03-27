@@ -6,6 +6,7 @@ using Microsoft.Bot.Builder.Dialogs;
 using System.Net.Http;
 using System.Threading;
 using AlexTrebot.Models;
+using System.Collections.Generic;
 
 namespace AlexTrebot.Dialogs
 {
@@ -13,6 +14,7 @@ namespace AlexTrebot.Dialogs
     public class RootDialog : IDialog<object>
     {
         protected int count = 1;
+        List<Game> AllGames { get; set; } = new List<Game>();
 
         public Task StartAsync(IDialogContext context)
         {
@@ -78,6 +80,10 @@ namespace AlexTrebot.Dialogs
                 context.Wait(this.MessageReceivedAsync);
                 return;
             }
+
+            //Add it to a list to "save" it in the database. This could very possibly change.
+            //Possibly a dictionary by userID or a Hashtable by UserID for multiple games per user.
+            AllGames.Add(game);
 
             await context.PostAsync($"Game created! {game}");
 
